@@ -44,6 +44,15 @@ def main():
                 pygame.quit()
                 return
 
+        # check for collisions between shots and asteroids
+        for shot in shots:
+            for asteroid in asteroids:
+                if shot.check_collision(asteroid):
+                    asteroid.split()
+                    shot.kill()
+                    # pygame.sprite.Sprite.kill(asteroid)
+                    # pygame.sprite.Sprite.kill(shot)
+
         # draw the background
         screen.fill("black")
 
